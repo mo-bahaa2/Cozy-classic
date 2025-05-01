@@ -169,6 +169,10 @@ h6,
     background-color: var(--primary) !important;
 }
 
+.logo{
+    height: 120px;
+}
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
