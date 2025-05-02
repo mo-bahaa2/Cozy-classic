@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>cozy crumb</title>
+    <title>cozy crumb - Order</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="keywords" />
     <meta content="" name="description" />
@@ -19,10 +19,7 @@
     />
 
     <!-- Icon Font Stylesheet -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css"
       rel="stylesheet"
@@ -37,6 +34,97 @@
 
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet" />
+    
+    <style>
+      .product-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        transition: all 0.3s;
+      }
+      .product-card:hover {
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      .product-image {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .quantity-control {
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+      }
+      .quantity-btn {
+        width: 30px;
+        height: 30px;
+        border: 1px solid #ddd;
+        background: #f8f9fa;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      .quantity-input {
+        width: 50px;
+        height: 30px;
+        text-align: center;
+        border: 1px solid #ddd;
+        margin: 0 5px;
+      }
+      .add-btn {
+        background: #C43670;
+        color: white;
+        border: none;
+        padding: 5px 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-left: 10px;
+      }
+      .add-btn:hover {
+        background: #F283AF;
+      }
+      .selected-products {
+        margin-top: 30px;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+      }
+      .selected-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .remove-btn {
+        color: #dc3545;
+        cursor: pointer;
+      }
+      .total-section {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 15px;
+      }
+      
+      /* لزر Place Order */
+      #submit-btn {
+        transition: all 0.3s;
+        position: relative;
+        overflow: hidden;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+      }
+
+      #submit-btn:not(:disabled):hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      #submit-btn:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    </style>
   </head>
 
   <body>
@@ -50,47 +138,27 @@
     <!-- Spinner End -->
 
     <!-- Topbar Start -->
-    <div
-      class="container-fluid top-bar bg-dark text-light px-0 wow fadeIn"
-      data-wow-delay="0.1s"
-    >
+    <div class="container-fluid top-bar bg-dark text-light px-0 wow fadeIn" data-wow-delay="0.1s">
       <div class="row gx-0 align-items-center d-none d-lg-flex">
-        <div class="col-lg-6 px-5 text-start">
-          <ol class="breadcrumb mb-0">
-            <li class="breadcrumb-item">
-              <a class="small text-light" href="#">Home</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a class="small text-light" href="#">Career</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a class="small text-light" href="#">Terms</a>
-            </li>
-            <li class="breadcrumb-item">
-              <a class="small text-light" href="#">Privacy</a>
-            </li>
-          </ol>
-        </div>
-        <div class="col-lg-6 px-5 text-end">
-          <small>Follow us:</small>
-          <div class="h-100 d-inline-flex align-items-center">
-            <a class="btn-lg-square text-primary border-end rounded-0" href=""
-              ><i class="fab fa-facebook-f"></i
-            ></a>
-            <a class="btn-lg-square text-primary border-end rounded-0" href=""
-              ><i class="fab fa-twitter"></i
-            ></a>
-            <a class="btn-lg-square text-primary border-end rounded-0" href=""
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-            <a class="btn-lg-square text-primary pe-0" href=""
-              ><i class="fab fa-instagram"></i
-            ></a>
+          <div class="col-lg-6 px-5 text-start">
+              <ol class="breadcrumb mb-0">
+                  <li class="breadcrumb-item"><a class="small text-light" href="#">Home</a></li>
+                  <li class="breadcrumb-item"><a class="small text-light" href="#">Career</a></li>
+                  <li class="breadcrumb-item"><a class="small text-light" href="#">Terms</a></li>
+                  <li class="breadcrumb-item"><a class="small text-light" href="#">Privacy</a></li>
+              </ol>
           </div>
-        </div>
+          <div class="col-lg-6 px-5 text-end">
+              <small>Follow us:</small>
+              <div class="h-100 d-inline-flex align-items-center social-icons">
+                <a class="btn-lg-square border-end rounded-0" href="https://www.facebook.com/share/1CGVSCTUkH/?mibextid=wwXIfr"><i class="fab fa-facebook-f"></i></a>
+                <a class="btn-lg-square border-end rounded-0" href="https://www.tiktok.com/@cozycrumb._?_t=ZS-8w1v5jCQLRY&_r=1"><i class="fa-brands fa-tiktok"></i></a>
+                <a class="btn-lg-square pe-0" href="https://www.instagram.com/cozycrumb._?igsh=aWhvNHNja3pramR2&utm_source=qr"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
       </div>
-    </div>
-    <!-- Topbar End -->
+  </div>
+  <!-- Topbar End -->
 
     <!-- Navbar Start -->
     <nav
@@ -118,7 +186,7 @@
           <a href="about.html" class="nav-item nav-link">About</a>
           <a href="service.html" class="nav-item nav-link">Services</a>
           <a href="product.html" class="nav-item nav-link">Products</a>
-          <a href="contact.html" class="nav-item nav-link active">Contact</a>
+          <a href="contact.html" class="nav-item nav-link active">Order Now</a>
         </div>
         <div class="d-none d-lg-flex">
           <div
@@ -128,7 +196,7 @@
           </div>
           <div class="ps-3">
             <small class="text-primary mb-0">Call Us</small>
-            <p class="text-light fs-5 mb-0">+012 345 6789</p>
+            <p class="text-light fs-5 mb-0">+20 102 8818877</p>
           </div>
         </div>
       </div>
@@ -142,7 +210,7 @@
     >
       <div class="container text-center pt-5 pb-3">
         <h1 class="display-4 text-white animated slideInDown mb-3">
-          Contact Us
+          Order Now
         </h1>
         <nav aria-label="breadcrumb animated slideInDown">
           <ol class="breadcrumb justify-content-center mb-0">
@@ -153,7 +221,7 @@
               <a class="text-white" href="#">Pages</a>
             </li>
             <li class="breadcrumb-item text-primary active" aria-current="page">
-              Contact
+              Order
             </li>
           </ol>
         </nav>
@@ -161,7 +229,7 @@
     </div>
     <!-- Page Header End -->
 
-    <!-- Contact Start -->
+    <!-- Product Selection Start -->
     <div class="container-xxl py-6">
       <div class="container">
         <div
@@ -169,15 +237,94 @@
           data-wow-delay="0.1s"
           style="max-width: 500px"
         >
-          <p class="text-primary text-uppercase mb-2">// Contact Us</p>
+          <p class="text-primary text-uppercase mb-2">// Our Products</p>
           <h1 class="display-6 mb-4">
-            If You Have Any cookies, Please Contact Us
+            Select Your Favorite Cookies
           </h1>
         </div>
-        <div class="row g-0 justify-content-center">
-          <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
-            <p class="text-center mb-4">Order Now</p>
-            <form>
+        
+        <div class="row">
+          <!-- Product 1 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="product-card">
+              <img src="img/WhatsApp Image 2025-05-01 at 8.18.35 PM (1).jpeg" alt="Cookie 1" class="product-image">
+              <h5>Cozy classic</h5>
+              <p>EGP 90</p>
+              <div class="quantity-control">
+                <button class="quantity-btn minus" data-product="1">-</button>
+                <input type="number" class="quantity-input" id="quantity-1" value="0" min="0">
+                <button class="quantity-btn plus" data-product="1">+</button>
+                <button class="add-btn" data-product="1">Add</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 2 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="product-card">
+              <img src="img/red.jpeg" alt="Cookie 2" class="product-image">
+              <h5>Velvet crumb</h5>
+              <p>EGP 100</p>
+              <div class="quantity-control">
+                <button class="quantity-btn minus" data-product="2">-</button>
+                <input type="number" class="quantity-input" id="quantity-2" value="0" min="0">
+                <button class="quantity-btn plus" data-product="2">+</button>
+                <button class="add-btn" data-product="2">Add</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 3 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="product-card">
+              <img src="img/WhatsApp Image 2025-05-01 at 9.01.43 PM (1).jpeg" alt="Cookie 3" class="product-image">
+              <h5>S’mores cookies</h5>
+              <p>EGP 110</p>
+              <div class="quantity-control">
+                <button class="quantity-btn minus" data-product="3">-</button>
+                <input type="number" class="quantity-input" id="quantity-3" value="0" min="0">
+                <button class="quantity-btn plus" data-product="3">+</button>
+                <button class="add-btn" data-product="3">Add</button>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Product 4 -->
+          <div class="col-md-3 col-sm-6 mb-4">
+            <div class="product-card">
+              <img src="img/WhatsApp Image 2025-05-01 at 9.01.17 PM.jpeg" alt="Cookie 4" class="product-image">
+              <h5>Cookies n creme</h5>
+              <p>EGP 150</p>
+              <div class="quantity-control">
+                <button class="quantity-btn minus" data-product="4">-</button>
+                <input type="number" class="quantity-input" id="quantity-4" value="0" min="0">
+                <button class="quantity-btn plus" data-product="4">+</button>
+                <button class="add-btn" data-product="4">Add</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Selected Products -->
+        <div class="selected-products wow fadeInUp" data-wow-delay="0.2s">
+          <h3 class="mb-4">Your Order</h3>
+          <div id="selected-items-container">
+            <!-- Selected items will appear here -->
+            <p class="text-muted">No items selected yet</p>
+          </div>
+          <div class="total-section">
+            Total: EGP <span id="total-amount">0.00</span>
+          </div>
+        </div>
+        
+        <!-- Customer Information Form -->
+        <div class="row g-0 justify-content-center mt-5 wow fadeInUp" data-wow-delay="0.3s">
+          <div class="col-lg-8">
+            <p class="text-center mb-4">Please provide your information</p>
+            <form id="order-form" action="https://formspree.io/f/mgvkayrz" method="POST">
+              <input type="hidden" id="order-items" name="order_items" value="">
+              <input type="hidden" id="order-total" name="order_total" value="0">
+              
               <div class="row g-3">
                 <div class="col-md-6">
                   <div class="form-floating">
@@ -185,7 +332,9 @@
                       type="text"
                       class="form-control"
                       id="name"
+                      name="name"
                       placeholder="Your Name"
+                      required
                     />
                     <label for="name">Your Name</label>
                   </div>
@@ -193,42 +342,62 @@
                 <div class="col-md-6">
                   <div class="form-floating">
                     <input
+                      type="tel"
+                      class="form-control"
+                      id="phone"
+                      name="phone"
+                      placeholder="Your Phone Number"
+                      required
+                    />
+                    <label for="phone">Phone Number</label>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="form-floating">
+                    <input
                       type="email"
                       class="form-control"
                       id="email"
+                      name="email"
                       placeholder="Your Email"
+                      required
                     />
                     <label for="email">Your Email</label>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-floating">
-                    <input
-                      type="text"
+                    <textarea
                       class="form-control"
-                      id="subject"
-                      placeholder="Subject"
-                    />
-                    <label for="subject">Subject</label>
+                      placeholder="Delivery Address"
+                      id="address"
+                      name="address"
+                      style="height: 100px"
+                      required
+                    ></textarea>
+                    <label for="address">Delivery Address</label>
                   </div>
                 </div>
                 <div class="col-12">
                   <div class="form-floating">
                     <textarea
                       class="form-control"
-                      placeholder="Leave a message here"
-                      id="message"
-                      style="height: 200px"
+                      placeholder="Special Instructions"
+                      id="instructions"
+                      name="instructions"
+                      style="height: 100px"
                     ></textarea>
-                    <label for="message">Message</label>
+                    <label for="instructions">Special Instructions</label>
                   </div>
                 </div>
-                <div class="col-12 text-center">
+                <div class="col-12 text-center wow fadeInUp" data-wow-delay="0.4s">
                   <button
                     class="btn btn-primary rounded-pill py-3 px-5"
                     type="submit"
+                    id="submit-btn"
+                    disabled
                   >
-                    Send Message
+                    Place Order <i class="fas fa-paper-plane ms-2"></i>
                   </button>
                 </div>
               </div>
@@ -237,7 +406,7 @@
         </div>
       </div>
     </div>
-    <!-- Contact End -->
+    <!-- Product Selection End -->
 
     <!-- Footer Start -->
     <div
@@ -249,31 +418,31 @@
           <div class="col-lg-3 col-md-6">
             <h4 class="text-light mb-4">Office Address</h4>
             <p class="mb-2">
-              <i class="fa fa-phone-alt me-3"></i>+012 345 67890
+              <i class="fa fa-phone-alt me-3"></i>+20 102 8818877
             </p>
             <p class="mb-2">
-              <i class="fa fa-envelope me-3"></i>info@example.com
+              <i class="fa fa-phone-alt me-3"></i>+20 100 1564025
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-phone-alt me-3"></i>+20 102 636 7882
+            </p>
+            <p class="mb-2">
+              <i class="fa fa-envelope me-3"></i>crumbcozy6@gmail.com            
             </p>
             <div class="d-flex pt-2">
               <a
                 class="btn btn-square btn-outline-light rounded-circle me-1"
-                href=""
-                ><i class="fab fa-twitter"></i
-              ></a>
+                href="https://www.tiktok.com/@cozycrumb._?_t=ZS-8w1v5jCQLRY&_r=1"
+                ><i class="fa-brands fa-tiktok"></i></a>
               <a
                 class="btn btn-square btn-outline-light rounded-circle me-1"
-                href=""
+                href="https://www.facebook.com/share/1CGVSCTUkH/?mibextid=wwXIfr"
                 ><i class="fab fa-facebook-f"></i
               ></a>
               <a
-                class="btn btn-square btn-outline-light rounded-circle me-1"
-                href=""
-                ><i class="fab fa-youtube"></i
-              ></a>
-              <a
                 class="btn btn-square btn-outline-light rounded-circle me-0"
-                href=""
-                ><i class="fab fa-linkedin-in"></i
+                href="https://www.instagram.com/cozycrumb._?igsh=aWhvNHNja3pramR2&utm_source=qr"
+                ><i class="fab fa-instagram"></i
               ></a>
             </div>
           </div>
@@ -356,7 +525,6 @@
             &copy; <a href="#">cozy crumb</a>, All Right Reserved.
           </div>
           <div class="col-md-6 text-center text-md-end">
-            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
             Designed By <a href="">Bahaa</a>
           </div>
         </div>
@@ -378,5 +546,113 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    
+    <!-- Order Form Script -->
+    <script>
+      $(document).ready(function() {
+        // Product data
+        const products = {
+          1: { name: "Cozy classic", price: 90 },
+          2: { name: "Velvet crumb", price: 100 },
+          3: { name: "S'mores cookies", price: 110 },
+          4: { name: "Cookies n creme", price: 150 }
+        };
+        
+        let selectedItems = {};
+        
+        // Quantity controls
+        $('.quantity-btn').click(function() {
+          const productId = $(this).data('product');
+          const input = $(`#quantity-${productId}`);
+          let value = parseInt(input.val());
+          
+          if ($(this).hasClass('minus')) {
+            value = value > 0 ? value - 1 : 0;
+          } else {
+            value = value + 1;
+          }
+          
+          input.val(value);
+        });
+        
+        // Add to order
+        $('.add-btn').click(function() {
+          const productId = $(this).data('product');
+          const quantity = parseInt($(`#quantity-${productId}`).val());
+          
+          if (quantity > 0) {
+            if (selectedItems[productId]) {
+              selectedItems[productId].quantity += quantity;
+            } else {
+              selectedItems[productId] = {
+                name: products[productId].name,
+                price: products[productId].price,
+                quantity: quantity
+              };
+            }
+            
+            $(`#quantity-${productId}`).val(0);
+            updateOrderSummary();
+          }
+        });
+        
+        // Remove item
+        $(document).on('click', '.remove-btn', function() {
+          const productId = $(this).data('product');
+          delete selectedItems[productId];
+          updateOrderSummary();
+        });
+        
+        // Update order summary
+        function updateOrderSummary() {
+          const container = $('#selected-items-container');
+          let total = 0;
+          
+          if (Object.keys(selectedItems).length === 0) {
+            container.html('<p class="text-muted">No items selected yet</p>');
+            $('#submit-btn').prop('disabled', true);
+          } else {
+            let html = '';
+            
+            for (const [id, item] of Object.entries(selectedItems)) {
+              const itemTotal = item.price * item.quantity;
+              total += itemTotal;
+              
+              html += `
+                <div class="selected-item">
+                  <div>
+                    <span class="fw-bold">${item.name}</span>
+                    <small class="text-muted">(EGP ${item.price.toFixed(2)} each)</small>
+                  </div>
+                  <div>
+                    <span>${item.quantity} x EGP ${item.price.toFixed(2)} = EGP ${itemTotal.toFixed(2)}</span>
+                    <span class="remove-btn ms-3" data-product="${id}"><i class="fas fa-trash"></i></span>
+                  </div>
+                </div>
+              `;
+            }
+            
+            container.html(html);
+            $('#submit-btn').prop('disabled', false);
+          }
+          
+          $('#total-amount').text(total.toFixed(2));
+          $('#order-total').val(total.toFixed(2));
+          
+          // Prepare order items for form submission
+          const orderItems = [];
+          for (const [id, item] of Object.entries(selectedItems)) {
+            orderItems.push(`${item.quantity} x ${item.name} - EGP ${item.price.toFixed(2)} each`);
+          }
+          $('#order-items').val(orderItems.join('\n'));
+        }
+        
+        // Form submission
+        $('#order-form').on('submit', function(e) {
+          // You can add additional validation here if needed
+          // Formspree will handle the actual submission
+        });
+      });
+    </script>
   </body>
 </html>
